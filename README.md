@@ -2,6 +2,22 @@
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
+## Setting Up HTTPS on localhost
+
+Storyblok v2 requires to be served via HTTPS. [Learn more](https://www.storyblok.com/faq/.setting-up-https-on-localhost-in-nuxt-3).
+
+1\. Create certificate with [mkcert](https://github.com/FiloSottile/mkcert):
+
+```bash
+mkcert localhost
+```
+
+2\. Run in HTTPS:
+
+```bash
+npm run dev:https
+```
+
 ## Setup
 
 Make sure to install the dependencies:
