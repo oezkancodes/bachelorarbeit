@@ -6,7 +6,9 @@ export default defineNuxtConfig({
   vite: {
     plugins: [eslintPlugin()]
   },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    ['@nuxtjs/tailwindcss', { cssPath: '~/assets/css/main.css', viewer: false }]
+  ],
   buildModules: [
     ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_ACCESS_TOKEN }]
   ]
