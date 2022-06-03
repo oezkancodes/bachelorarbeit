@@ -1,8 +1,25 @@
-# Nuxt 3 Minimal Starter
+# Bachelorarbeit
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Bachelorarbeit zum Thema: **Contentmanagement im Jamstack: redaktionelle Pflege von Websites in der Headless Architektur**
 
-## Setting Up HTTPS on localhost
+Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungsszenarien für die redaktionelle Pflege von Websites im Jamstack. Die erarbeiteten Lösungsszenarien sollen darstellen, wie sich die redaktionellen Aufgaben, die Entwickler aus der monolithischen Architektur gewohnt sind, im Jamstack zu lösen sind.
+
+## Techstack
+
+| Bereich       | Technologie                              | Notizen                                                                      |
+| :------------ | :--------------------------------------- | :--------------------------------------------------------------------------- |
+| Frontend      | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
+| CSS Framework | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
+| Headless CMS  | [Storyblok](https://www.storyblok.com/)  |                                                                              |
+| Hosting       | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelor-thesis.netlify.app/)                            |
+
+## Setup Storyblok
+
+### 1. Connect API
+
+Environment variable `STORYBLOK_ACCESS_TOKEN` needed.
+
+### 2. Storyblok v2 visual editor
 
 Storyblok v2 requires to be served via HTTPS. [Learn more](https://www.storyblok.com/faq/.setting-up-https-on-localhost-in-nuxt-3).
 
@@ -18,7 +35,9 @@ mkcert localhost
 npm run dev:https
 ```
 
-## Setup
+## Setup Nuxt
+
+Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
 Make sure to install the dependencies:
 
