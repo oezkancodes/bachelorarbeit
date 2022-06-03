@@ -3,6 +3,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:https": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
