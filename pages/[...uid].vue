@@ -23,10 +23,9 @@
   const story = ref(null);
 
   // Fetch Story
-  const res = await useStoryblok(
-    `${route.fullPath === '/' ? '/home' : route.fullPath}`,
-    { version: 'draft' }
-  );
+  const res = await useStoryblok('/' + realPathResolver(route.path), {
+    version: 'draft'
+  });
   story.value = res.value;
   layout.value = story.value ? story.value.content.layout : layout.value;
 
