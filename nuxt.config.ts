@@ -11,5 +11,11 @@ export default defineNuxtConfig({
   ],
   buildModules: [
     ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_ACCESS_TOKEN }]
-  ]
+  ],
+  generate: {
+    /**
+     * TODO: fetch routes from Storyblok API
+     */
+    routes: ['/', '/services']
+  }
 });
