@@ -63,7 +63,6 @@
 
   onMounted(() => {
     // Listen for changes from Storyblok visual editor
-    if (!story.value) return;
     useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
   });
 </script>
