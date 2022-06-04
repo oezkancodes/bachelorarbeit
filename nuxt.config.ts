@@ -7,6 +7,10 @@ import { tailwindcss } from './config/nuxt.tailwind';
 export default defineNuxtConfig({
   target: 'static',
 
+  generate: {
+    fallback: '404.html'
+  },
+
   vite: {
     plugins: [eslintPlugin()]
   },
