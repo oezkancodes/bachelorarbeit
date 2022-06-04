@@ -19,5 +19,8 @@ interface StoryblokConfig {
 }
 
 export const storyblok: StoryblokConfig = {
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN || 'fELMP1ayneYdq04XByw1jgtt'
+  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+  apiOptions: {
+    accessToken: 'fELMP1ayneYdq04XByw1jgtt'
+  }
 };
