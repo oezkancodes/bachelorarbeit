@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt';
 import eslintPlugin from 'vite-plugin-eslint';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
+import { NitroConfig } from 'nitropack';
 import { storyblok } from './config/nuxt.storyblok.config';
 import { tailwindcss } from './config/nuxt.tailwind';
 import { linkResolver } from './composables/storyblok';
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
   storyblok,
 
   hooks: {
-    async 'nitro:config'(nitroConfig) {
+    async 'nitro:config'(nitroConfig: NitroConfig) {
       if (nitroConfig.dev) {
         return;
       }
