@@ -1,6 +1,7 @@
 <template>
   <div v-if="blok" v-editable="blok">
-    <StoryblokComponent
+    <component
+      :is="each_blok.component"
       v-for="each_blok in blok.block"
       :key="each_blok._uid"
       :blok="each_blok"

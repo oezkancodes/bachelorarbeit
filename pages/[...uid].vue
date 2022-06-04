@@ -7,8 +7,13 @@
       <Meta name="description" :content="story.content.seo_description" />
     </Head>
 
+    <p>STATIC SITE</p>
     <!-- Storyblok -->
-    <StoryblokComponent v-if="story" :blok="story.content" />
+    <component
+      :is="story.content.component"
+      v-if="story"
+      :blok="story.content"
+    />
   </NuxtLayout>
 </template>
 
