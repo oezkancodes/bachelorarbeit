@@ -17,9 +17,9 @@ Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungssz
 
 ### 1. Connect API
 
-Environment variable `STORYBLOK_ACCESS_TOKEN` needed.
+Setup `STORYBLOK_ACCESS_TOKEN` environment variable inside `.env`. Get the key from the Storyblok Settings → API-Keys.
 
-### 2. Storyblok v2 visual editor
+### 2. Storyblok v2 visual editor (optional)
 
 Storyblok v2 requires to be served via HTTPS. [Learn more](https://www.storyblok.com/faq/.setting-up-https-on-localhost-in-nuxt-3).
 
