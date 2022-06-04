@@ -7,7 +7,6 @@
       <Meta name="description" :content="story.content.seo_description" />
     </Head>
 
-    <p>STATIC SITE</p>
     <!-- Storyblok -->
     <component
       :is="story.content.component"
