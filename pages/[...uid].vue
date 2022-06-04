@@ -20,10 +20,12 @@
 
 <script setup>
   definePageMeta({
+    // https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
     layout: false
   });
 
   const route = useRoute();
+
   const story = ref(null);
   const layout = computed(() =>
     !story ? 'default' : story.value.content.layout
@@ -34,4 +36,9 @@
     version: 'draft'
   });
   story.value = res.value;
+
+  onMounted(() => {
+    // Listen for changes from Storyblok visual editor
+    useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
+  });
 </script>
