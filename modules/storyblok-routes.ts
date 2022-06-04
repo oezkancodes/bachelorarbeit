@@ -5,11 +5,7 @@ import { linkResolver } from '../composables/storyblok';
 /**
  * Fetch routes from Storyblok API
  */
-export default async (inlineOptions, nuxt) => {
-  // You can do whatever you like here..
-  console.log(inlineOptions.token); // `123`
-  console.log(nuxt.options.dev); // `true` or `false`
-
+export default async (_inlineOptions, nuxt) => {
   await nuxt.hook('nitro:config', async (nitroConfig: NitroConfig) => {
     if (nitroConfig.dev) {
       return;
