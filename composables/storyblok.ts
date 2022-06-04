@@ -9,14 +9,14 @@ function linkResolver(path) {
 }
 
 /**
- * Resolve path to real path.
+ * Resolve path from Router to Storyblok real path.
  * Read more: https://www.storyblok.com/cl/real-path-added-to-content-delivery-api
  *
  * @param {string} path
  * @returns {string}
  */
-function realPathResolver(path) {
-  return path === '/' ? 'home' : path;
+function realPathResolver(path: string) {
+  return path === '/' ? 'home' : path.substring(1);
 }
 
 export { realPathResolver, linkResolver };
