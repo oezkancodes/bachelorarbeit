@@ -1,5 +1,4 @@
 <template>
-  <!-- Page -->
   <main>
     <!-- Layout -->
     <NuxtLayout :name="layout">
