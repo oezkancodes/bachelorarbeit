@@ -5,10 +5,10 @@ import { tailwindcss } from './config/nuxt.tailwind';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  target: 'static',
+  target: 'server',
 
   generate: {
-    fallback: true
+    fallback: '404.html'
   },
 
   vite: {

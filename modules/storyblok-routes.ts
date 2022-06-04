@@ -33,7 +33,6 @@ export default async (_inlineOptions, nuxt) => {
         // Map stories to accessible paths
         routes = stories.map((story) => '/' + linkResolver(story.full_slug));
         console.log(routes);
-        routes.push('/404');
         return routes;
       })
       .catch((err) => {
