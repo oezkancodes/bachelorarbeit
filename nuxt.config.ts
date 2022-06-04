@@ -15,15 +15,13 @@ export default defineNuxtConfig({
    * Modules
    */
   modules: [
-    [
-      '@nuxtjs/tailwindcss',
-      { cssPath: '~/assets/css/main.css', viewer: false }
-    ],
+    /** Dependency Modules */
+    '@nuxtjs/tailwindcss',
+
+    /** Custom Modules */
     './modules/storyblok-routes'
   ],
-  buildModules: [
-    ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_ACCESS_TOKEN }]
-  ],
+  buildModules: ['@storyblok/nuxt'],
 
   /**
    * Configuration
