@@ -33,10 +33,8 @@
   const storyblokApi = useStoryblokApi();
   const route = useRoute();
 
-  // State
+  // Fetch Story
   const story = ref<StoryData>(null);
-
-  // Fetch data
   try {
     const { data }: Story = await storyblokApi.get(
       'cdn/stories/' + realPathResolver(route.path),
@@ -62,6 +60,7 @@
   });
 
   onMounted(() => {
+    if (!story.value) return;
     // Listen for changes from Storyblok visual editor
     useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
   });
