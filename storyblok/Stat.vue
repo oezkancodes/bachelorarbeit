@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blok" class="flex flex-col px-8 pt-8">
+  <div v-if="blok" v-editable="blok" class="flex flex-col px-8 pt-8">
     <dt
       class="order-2 text-base font-medium text-gray-500"
       v-text="blok.title"

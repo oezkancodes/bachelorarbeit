@@ -1,5 +1,9 @@
 <template>
-  <div class="h-12 flex items-center justify-center">
+  <div
+    v-if="blok"
+    v-editable="blok"
+    class="h-12 flex items-center justify-center"
+  >
     <StoryblokImage v-if="blok" class="w-full" :image="blok.image" />
   </div>
 </template>

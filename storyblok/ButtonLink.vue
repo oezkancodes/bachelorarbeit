@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
     v-if="blok"
+    v-editable="blok"
     class="inline-flex cursor-pointer items-center rounded-md border border-transparent px-6 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2"
     :class="[
       {

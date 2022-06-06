@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blok">
+  <div v-if="blok" v-editable="blok">
     <div>
       <span
         class="flex h-12 w-12 items-center justify-center rounded-md bg-white bg-opacity-10"
