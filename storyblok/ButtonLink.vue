@@ -12,6 +12,7 @@
           blok.type === 'secondary'
       }
     ]"
+    :target="type === 'url' ? '_blank' : null"
     :to="url"
     @click="$emit('click')"
   >
@@ -27,8 +28,9 @@
     }
   });
 
+  const type = ref(props.blok.link.linktype);
   const url =
-    props.blok.link.linktype === 'story'
+    type === 'story'
       ? '/' + linkResolver(props.blok.link.cached_url)
       : props.blok.link.cached_url;
 </script>
