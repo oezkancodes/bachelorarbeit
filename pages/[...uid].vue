@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
   import { Story, StoryData } from 'storyblok-js-client';
-  import { SEO } from '~/@types/SEO';
+  import { PageSEO } from '~/@types/SEO';
 
   definePageMeta({
     // https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
@@ -48,7 +48,7 @@
   }
 
   // SEO
-  const seo = ref<SEO>({
+  const seo = ref<PageSEO>({
     title: story.value?.content.seo_title,
     description: story.value?.content.seo_description,
     image: story.value?.content.seo_image.filename
