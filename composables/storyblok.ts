@@ -4,7 +4,7 @@
  * @param {string} path
  * @returns {string} returns path without slash on start
  */
-function linkResolver(path) {
+function linkResolver(path: string): string {
   return path === 'home' ? '' : path;
 }
 
@@ -15,7 +15,7 @@ function linkResolver(path) {
  * @param {string} path
  * @returns {string}
  */
-function realPathResolver(path: string) {
+function realPathResolver(path: string): string {
   return path === '/' ? 'home' : path.substring(1);
 }
 
