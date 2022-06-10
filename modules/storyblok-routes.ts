@@ -45,7 +45,8 @@ export default defineNuxtModule({
           );
           // Map stories to accessible paths
           routes = stories.map((story) => '/' + linkResolver(story.full_slug));
-          console.log(routes);
+          console.log('✅ Dynamic routes found and ready for SSG:');
+          routes.forEach((route) => console.log('   📄 ' + route));
           return routes;
         })
         .catch((err) => {
