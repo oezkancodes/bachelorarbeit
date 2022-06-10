@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import xml from 'xml';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { defineNuxtModule } from '@nuxt/kit';
@@ -27,7 +27,7 @@ export default defineNuxtModule({
     }
   },
   setup(options, nuxt) {
-    nuxt.hook('nitro:config', async () => {
+    nuxt.hook('generate:done', async () => {
       const storyblokApi = new StoryblokClient({
         accessToken: process.env.STORYBLOK_ACCESS_TOKEN
       });
@@ -125,6 +125,9 @@ export default defineNuxtModule({
         sitemapObject
       )}`;
 
+      if (!existsSync(nuxt.options.rootDir + '/dist')) {
+        mkdirSync(nuxt.options.rootDir + '/dist');
+      }
       writeFileSync(
         nuxt.options.rootDir + '/dist' + options.path,
         sitemap,
