@@ -19,8 +19,10 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.1.0",
+    "fs": "^0.0.1-security",
     "nuxt": "3.0.0-rc.3",
     "storyblok-js-client": "^4.5.2",
-    "vite-plugin-eslint": "^1.6.1"
+    "vite-plugin-eslint": "^1.6.1",
+    "xml": "^1.0.1"
   }
 }

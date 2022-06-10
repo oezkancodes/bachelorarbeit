@@ -23,12 +23,13 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
 
     /** Custom Modules */
-    './modules/storyblok-routes'
+    './modules/storyblok-routes',
+    './modules/sitemap'
   ],
   buildModules: ['@storyblok/nuxt'],
 
   /**
-   * Configuration
+   * Modules / Build Modules configs
    */
   tailwindcss,
   storyblok
