@@ -15,6 +15,8 @@ export default defineNuxtConfig({
     plugins: [eslintPlugin()]
   },
 
+  css: ['~/assets/css/_fonts.css'],
+
   /**
    * Modules
    */
