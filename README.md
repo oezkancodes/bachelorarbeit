@@ -1,3 +1,5 @@
+> ⚠️ In Berbeitung
+
 # Bachelorarbeit
 
 Bachelorarbeit zum Thema: **Contentmanagement im Jamstack: redaktionelle Pflege von Websites in der Headless Architektur**
@@ -6,12 +8,12 @@ Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungssz
 
 ## Techstack
 
-| Bereich       | Technologie                              | Notizen                                                                      |
-| :------------ | :--------------------------------------- | :--------------------------------------------------------------------------- |
-| Frontend      | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
-| CSS Framework | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
-| Headless CMS  | [Storyblok](https://www.storyblok.com/)  |                                                                              |
-| Hosting       | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.thenextbit.de/)                           |
+| Bereich             | Technologie                              | Notizen                                                                      |
+| :------------------ | :--------------------------------------- | :--------------------------------------------------------------------------- |
+| Frontend Framework  | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
+| CSS Framework       | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
+| Headless CMS        | [Storyblok](https://www.storyblok.com/)  |                                                                              |
+| Hosting             | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.thenextbit.de/)                           |
 
 ## Setup Storyblok
 
