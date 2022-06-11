@@ -11,7 +11,7 @@ Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungssz
 | Frontend      | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
 | CSS Framework | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
 | Headless CMS  | [Storyblok](https://www.storyblok.com/)  |                                                                              |
-| Hosting       | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.netlify.app/)                             |
+| Hosting       | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.thenextbit.de/)                           |
 
 ## Setup Storyblok
 
