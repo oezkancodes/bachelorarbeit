@@ -30,8 +30,9 @@
   });
 
   const type = ref(props.blok.link.linktype);
-  const url =
-    type === 'story'
+  const url = ref(
+    type.value === 'story'
       ? '/' + linkResolver(props.blok.link.cached_url)
-      : props.blok.link.cached_url;
+      : props.blok.link.cached_url
+  );
 </script>
