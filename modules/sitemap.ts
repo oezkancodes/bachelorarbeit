@@ -4,7 +4,6 @@ import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { defineNuxtModule } from '@nuxt/kit';
 import { linkResolver } from '../composables/storyblok';
 
-// https://v3.nuxtjs.org/guide/going-further/modules#module-author-guide
 export default defineNuxtModule({
   meta: {
     name: 'nuxt-sitemap',
@@ -32,9 +31,7 @@ export default defineNuxtModule({
         accessToken: process.env.STORYBLOK_ACCESS_TOKEN
       });
 
-      /**
-       * Fetch routes from Storyblok API
-       */
+      // Fetch routes from Storyblok API
       const stories: StoryData[] = await storyblokApi
         .get('cdn/stories', {
           starts_with: '',
@@ -57,9 +54,7 @@ export default defineNuxtModule({
           return [];
         });
 
-      /**
-       * Generate Sitemap
-       */
+      // Generate Sitemap
       const pages = stories.map(
         ({ content, first_published_at, published_at, full_slug }) => ({
           title: content.seo_title || '',
@@ -70,7 +65,7 @@ export default defineNuxtModule({
       );
 
       const indexItem = {
-        // build index item
+        // Build index item
         url: [
           {
             loc: options.hostname
@@ -93,7 +88,7 @@ export default defineNuxtModule({
       };
 
       const sitemapItems = pages.reduce(function (items, item) {
-        // build page items
+        // Build page items
         items.push({
           url: [
             {
