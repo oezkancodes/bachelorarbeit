@@ -1,4 +1,4 @@
-> ⚠️ In Berbeitung
+> ⚠️ In Bearbeitung
 
 # Bachelorarbeit
 
