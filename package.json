@@ -21,6 +21,8 @@
     "eslint-plugin-vue": "^9.1.0",
     "fs": "^0.0.1-security",
     "nuxt": "3.0.0-rc.3",
+    "prettier": "^2.6.2",
+    "prettier-plugin-tailwindcss": "^0.1.11",
     "storyblok-js-client": "^4.5.2",
     "vite-plugin-eslint": "^1.6.1",
     "xml": "^1.0.1"
