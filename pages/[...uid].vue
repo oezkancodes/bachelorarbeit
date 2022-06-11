@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
   import { Story, StoryData } from 'storyblok-js-client';
-  import { PageSEO } from '~/@types/SEO';
+  import { PageSEO } from '~/@types/PageSEO';
 
   definePageMeta({
     // https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
