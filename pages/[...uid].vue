@@ -1,21 +1,23 @@
 <template>
-  <main v-if="story">
+  <main v-if="data">
     <!-- Layout -->
-    <NuxtLayout :name="story.content.layout || 'default'">
+    <NuxtLayout :name="data.content.layout || 'default'">
       <!-- SEO -->
       <Head>
+        <!-- Basic SEO -->
         <Title>{{ seo.title }}</Title>
         <Meta name="description" :content="seo.description" />
+        <!-- OGP -->
         <Meta name="og:title" :content="seo.title" />
         <Meta name="og:description" :content="seo.description" />
-        <Meta v-if="seo.image" name="og:image" :content="seo.image" />
+        <Meta name="og:image" :content="seo.image" />
         <Meta name="og:url" :content="seo.url" />
         <Meta name="og:type" :content="seo.type" />
         <Meta name="og:locale" :content="seo.locale" />
       </Head>
 
       <!-- Storyblok -->
-      <component :is="story.content.component" :blok="story.content" />
+      <component :is="data.content.component" :blok="data.content" />
     </NuxtLayout>
   </main>
 </template>
@@ -24,44 +26,46 @@
   import { Story, StoryData } from 'storyblok-js-client';
   import { PageSEO } from '~/@types/PageSEO';
 
-  definePageMeta({
-    // https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
-    layout: false
-  });
-
-  // Utils
-  const storyblokApi = useStoryblokApi();
   const route = useRoute();
+  const storyblokApi = useStoryblokApi();
 
   // Fetch Story
-  const story = ref<StoryData>(null);
-  try {
-    const { data }: Story = await storyblokApi.get(
+  const { data, error } = await useAsyncData(route.path, async () => {
+    const res: Story = await storyblokApi.get(
       'cdn/stories/' + realPathResolver(route.path),
       {
         version: 'draft'
       }
     );
-    story.value = data.story;
-  } catch (err) {
-    throwError(err.response.status + ' ' + err.response.statusText);
-  }
-
-  // SEO
-  const seo = ref<PageSEO>({
-    title: story.value?.content.seo_title,
-    description: story.value?.content.seo_description,
-    image: story.value?.content.seo_image.filename
-      ? story.value.content.seo_image.filename
-      : null,
-    url: 'https://bachelorarbeit.netlify.app' + linkResolver(route.path),
-    type: 'website',
-    locale: 'de_DE'
+    return res.data.story;
   });
 
+  if (error.value) {
+    throwError('Story not found');
+  }
+
+  // Disable layout
+  // https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
+  definePageMeta({
+    layout: false
+  });
+
+  // SEO
+  const seo = useState<PageSEO>('seo', () => ({
+    title: data.value.content.seo_title,
+    description: data.value.content.seo_description,
+    image: data.value.content.seo_image.filename,
+    url: 'https://bachelorarbeit.thenextbit.de' + route.path,
+    type: 'website',
+    locale: 'de_DE'
+  }));
+
   onMounted(() => {
-    if (!story.value) return;
+    if (!data.value) return;
     // Listen for changes from Storyblok visual editor
-    useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
+    useStoryblokBridge(
+      data.value.id,
+      (evStory: StoryData) => (data.value = evStory)
+    );
   });
 </script>
