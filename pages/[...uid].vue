@@ -2,12 +2,10 @@
   <main v-if="data">
     <!-- Layout -->
     <NuxtLayout :name="data.content.layout || 'default'">
-      <!-- SEO -->
+      <!-- SEO with Meta Components https://v3.nuxtjs.org/guide/features/head-management#meta-components -->
       <Head>
-        <!-- Basic SEO -->
         <Title>{{ seo.title }}</Title>
         <Meta name="description" :content="seo.description" />
-        <!-- OGP -->
         <Meta name="og:title" :content="seo.title" />
         <Meta name="og:description" :content="seo.description" />
         <Meta name="og:image" :content="seo.image" />
@@ -44,21 +42,29 @@
     throwError('Story not found');
   }
 
-  // Disable layout
-  // https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
+  /**
+   * Disable layout for manual control
+   * https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
+   */
   definePageMeta({
     layout: false
   });
 
-  // SEO
-  const seo = useState<PageSEO>('seo', () => ({
+  /**
+   * SEO
+   *
+   * For SEO use the useStoryHead composable, which is basen on the useHead composable.
+   * Or use the Meta Components inside the template. The related data is stored in seo as ref.
+   */
+  // useStoryHead(data.value, route.path);
+  const seo = ref<PageSEO>({
     title: data.value.content.seo_title,
     description: data.value.content.seo_description,
     image: data.value.content.seo_image.filename,
     url: 'https://bachelorarbeit.thenextbit.de' + route.path,
     type: 'website',
     locale: 'de_DE'
-  }));
+  });
 
   onMounted(() => {
     if (!data.value) return;
