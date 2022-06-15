@@ -20,7 +20,8 @@ export default defineNuxtModule({
   },
 
   defaults: {
-    exclude: []
+    exclude: [],
+    include: []
   },
 
   setup(options, nuxt) {
@@ -46,7 +47,7 @@ export default defineNuxtModule({
           let routes: string[] = [];
           // Map stories to accessible paths
           routes = stories.map((story) => '/' + linkResolver(story.full_slug));
-          printRoutesSuccess(routes);
+          printRoutes(routes, '✅ Dynamic routes found:');
           return routes;
         })
         .catch(() => {
@@ -59,16 +60,23 @@ export default defineNuxtModule({
       if (Array.isArray(routes) && routes.length === 0) {
         console.warn('⚠️ Dynamic routes fetched, but empty.');
       }
+      if (Array.isArray(options.include)) {
+        options.include.forEach((path) => {
+          if (typeof path !== 'string') return;
+          routes.push('/' + path);
+        });
+        printRoutes(options.include, '✅ Include routes:');
+      }
       // Inject routes for prerender
       routes.forEach((path) => nitroConfig.prerender.routes.push(path));
     });
   }
 });
 
-function printRoutesSuccess(routes: string[]): void {
+function printRoutes(routes: string[], message: string): void {
   if (!Array.isArray(routes)) return;
   console.group();
-  console.log('✅ Dynamic routes found and ready for SSG:');
+  console.log(message);
   routes.forEach((route) => console.log('   📄 ' + route));
   console.groupEnd();
 }
