@@ -47,12 +47,17 @@
   // Fetch Story
   const storyblokApi = useStoryblokApi();
   const { data } = await useAsyncData('footer', async () => {
-    const res: Story = await storyblokApi.get(
-      'cdn/stories/configuration/footer',
-      {
-        version: 'draft'
-      }
-    );
-    return res.data.story;
+    try {
+      const res: Story = await storyblokApi.get(
+        'cdn/stories/configuration/footer',
+        {
+          version: 'draft'
+        }
+      );
+      return res.data.story;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   });
 </script>
