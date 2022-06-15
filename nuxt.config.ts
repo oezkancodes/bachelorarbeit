@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt';
 import eslintPlugin from 'vite-plugin-eslint';
+import svgLoader from 'vite-svg-loader';
 
 import { storyblok } from './config/storyblok.config';
 import { tailwindcss } from './config/tailwindcss.config';
@@ -21,7 +22,7 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    plugins: [eslintPlugin()]
+    plugins: [eslintPlugin(), svgLoader()]
   },
 
   css: ['~/assets/css/_fonts.css'],
