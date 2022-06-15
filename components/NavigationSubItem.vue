@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blok">
+  <div v-if="blok" v-editable="blok">
     <NuxtLink
       v-if="type === 'story'"
       :to="url"
