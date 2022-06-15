@@ -1,7 +1,9 @@
 import { defineNuxtConfig } from 'nuxt';
 import eslintPlugin from 'vite-plugin-eslint';
-import { storyblok } from './config/nuxt.storyblok.config';
-import { tailwindcss } from './config/nuxt.tailwind';
+
+import { storyblok } from './config/storyblok.config';
+import { tailwindcss } from './config/tailwindcss.config';
+import { dynamicRoutes } from './config/dynamic-routes.config';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -24,22 +26,13 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/_fonts.css'],
 
-  /**
-   * Modules
-   */
   modules: [
-    /** Dependency Modules */
-    '@nuxtjs/tailwindcss',
+    ['@nuxtjs/tailwindcss', tailwindcss],
 
-    /** Custom Modules */
-    './modules/storyblok-routes',
+    // Custom Modules
+    ['./modules/dynamic-routes', dynamicRoutes],
     './modules/sitemap'
   ],
-  buildModules: ['@storyblok/nuxt'],
 
-  /**
-   * Modules / Build Modules configs
-   */
-  tailwindcss,
-  storyblok
+  buildModules: [['@storyblok/nuxt', storyblok]]
 });
