@@ -63,7 +63,7 @@ export default defineNuxtModule({
       if (Array.isArray(options.include)) {
         options.include.forEach((path) => {
           if (typeof path !== 'string') return;
-          routes.push('/' + path);
+          routes.push(path);
         });
         printRoutes(options.include, '✅ Include routes:');
       }
