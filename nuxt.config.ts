@@ -11,6 +11,13 @@ export default defineNuxtConfig({
     fallback: '404.html'
   },
 
+  runtimeConfig: {
+    public: {
+      HOSTNAME: 'https://bachelorarbeit.thenextbit.com',
+      STORYBLOK_PUBLIC_KEY: 'ph7JGalLdMBpo5QAoDrQLwtt'
+    }
+  },
+
   vite: {
     plugins: [eslintPlugin()]
   },
