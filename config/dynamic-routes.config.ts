@@ -21,6 +21,10 @@ interface DynamicRoutesConfig {
 }
 
 export const dynamicRoutes: DynamicRoutesConfig = {
-  exclude: ['configuration/navigation', 'configuration/password'],
+  exclude: [
+    'configuration/navigation',
+    'configuration/footer',
+    'configuration/password'
+  ],
   include: ['/sitemap.xml']
 };
