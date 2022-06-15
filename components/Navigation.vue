@@ -1,7 +1,7 @@
 <template>
   <nav
-    v-if="story"
-    v-editable="story.content"
+    v-if="data"
+    v-editable="data.content"
     class="border-b-2 border-gray-100 md:py-2"
   >
     <div
@@ -9,16 +9,13 @@
     >
       <!-- Logo -->
       <NuxtLink href="/" class="col-span-6 md:col-span-3">
-        <StoryblokImage
-          class="h-8 w-auto sm:h-10"
-          :image="story.content.logo"
-        />
+        <StoryblokImage class="h-8 w-auto sm:h-10" :image="data.content.logo" />
       </NuxtLink>
 
       <!-- Desktop Nav Items -->
       <div class="hidden space-x-6 md:col-span-6 md:flex md:justify-center">
         <NavigationItem
-          v-for="nav_item_blok in story.content.nav_items"
+          v-for="nav_item_blok in data.content.nav_items"
           :key="nav_item_blok._uid"
           :blok="nav_item_blok"
         />
@@ -53,7 +50,7 @@
             <NuxtLink href="/" class="col-span-6" @click="menu = false">
               <StoryblokImage
                 class="h-8 w-auto sm:h-10"
-                :image="story.content.logo"
+                :image="data.content.logo"
               />
             </NuxtLink>
 
@@ -68,9 +65,9 @@
           </div>
 
           <!-- Mobile Nav Items -->
-          <nav v-if="story.content.nav_items" class="mt-6 grid gap-y-6">
+          <nav v-if="data.content.nav_items" class="mt-6 grid gap-y-6">
             <MobileNavigationItem
-              v-for="nav_item_blok in story.content.nav_items"
+              v-for="nav_item_blok in data.content.nav_items"
               :key="nav_item_blok._uid"
               :blok="nav_item_blok"
             />
@@ -83,29 +80,24 @@
 
 <script setup lang="ts">
   import { MenuIcon, XIcon } from '@heroicons/vue/outline';
-  import { Story, StoryData } from 'storyblok-js-client';
-
-  // Utils
-  const storyblokApi = useStoryblokApi();
+  import { Story } from 'storyblok-js-client';
 
   // Fetch Story
-  const story = ref<StoryData>(null);
-  try {
-    const { data }: Story = await storyblokApi.get(
-      'cdn/stories/configuration/navigation',
-      {
-        version: 'draft'
-      }
-    );
-    story.value = data.story;
-  } catch (err) {
-    console.error(
-      "Couldn't load Navigation. " +
-        err.response.status +
-        ' ' +
-        err.response.statusText
-    );
-  }
+  const storyblokApi = useStoryblokApi();
+  const { data } = await useAsyncData('navigation', async () => {
+    try {
+      const res: Story = await storyblokApi.get(
+        'cdn/stories/configuration/navigation',
+        {
+          version: 'draft'
+        }
+      );
+      return res.data.story;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  });
 
   const menu = ref(false);
 </script>
