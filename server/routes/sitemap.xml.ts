@@ -1,6 +1,7 @@
 import { SitemapStream, streamToPromise } from 'sitemap';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { linkResolver } from '~/composables/storyblok';
+import { dynamicRoutes } from '~/config/dynamic-routes.config';
 
 export default defineEventHandler(async () => {
   // Fetch Stories
@@ -8,10 +9,7 @@ export default defineEventHandler(async () => {
   const storyblokApi = new StoryblokClient({
     accessToken: config.public.STORYBLOK_PUBLIC_KEY
   });
-  const excluding_slugs = [
-    'configuration/navigation',
-    'configuration/password'
-  ];
+  const excluding_slugs = dynamicRoutes.exclude;
   const stories: StoryData[] = await storyblokApi
     .get('cdn/stories', {
       starts_with: '',
@@ -31,7 +29,6 @@ export default defineEventHandler(async () => {
   for (const story of stories) {
     sitemap.write({
       url: linkResolver(story.full_slug),
-      changefreq: 'daily',
       priority: 1
     });
   }
