@@ -1,27 +1,35 @@
 > ⚠️ In Bearbeitung
 
+![Titelbild](./public/images/thesis-title.jpg)
+
 # Bachelorarbeit
 
-Bachelorarbeit zum Thema: **Contentmanagement im Jamstack: redaktionelle Pflege von Websites in der Headless Architektur**
+Bachelorarbeit zum Thema: **Contentmanagement im Jamstack: redaktionelle Pflege von Websites in der Headless Architektur mit Nuxt 3 und Storyblok.**
 
 Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungsszenarien für die redaktionelle Pflege von Websites im Jamstack. Die erarbeiteten Lösungsszenarien sollen darstellen, wie sich die redaktionellen Aufgaben, die Entwickler aus der monolithischen Architektur gewohnt sind, im Jamstack zu lösen sind.
 
 ## Techstack
 
-| Bereich             | Technologie                              | Notizen                                                                      |
-| :------------------ | :--------------------------------------- | :--------------------------------------------------------------------------- |
-| Frontend Framework  | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
-| CSS Framework       | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
-| Headless CMS        | [Storyblok](https://www.storyblok.com/)  |                                                                              |
-| Hosting             | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.thenextbit.de/)                           |
+| Bereich            | Technologie                              | Notizen                                                                      |
+| :----------------- | :--------------------------------------- | :--------------------------------------------------------------------------- |
+| Frontend Framework | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
+| CSS Framework      | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
+| Headless CMS       | [Storyblok](https://www.storyblok.com/)  |                                                                              |
+| Hosting            | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.thenextbit.de/)                           |
 
-## Setup Storyblok
+---
 
-### 1. Connect API
+## Setup Storyblok (optional)
 
-Setup `STORYBLOK_ACCESS_TOKEN` environment variable inside `.env`. Get the key from the Storyblok Settings → API-Keys.
+### 1. Add private API key
 
-### 2. Storyblok v2 visual editor (optional)
+> 💡 This step is completely optional, as a public key for API requests is integrated.
+
+Setup `STORYBLOK_PRIVATE_KEY` environment variable inside `.env`. Get the key from the Storyblok Settings → API-Keys. This step is optional because a public key is already used.
+
+### 2. Storyblok v2 visual editor for local development
+
+> 💡 This step is completely optional if you have no access to Storyblok dashboard or are using Storyblok v1.
 
 Storyblok v2 requires to be served via HTTPS. [Learn more](https://www.storyblok.com/faq/.setting-up-https-on-localhost-in-nuxt-3).
 
@@ -36,6 +44,8 @@ mkcert localhost
 ```bash
 npm run dev:https
 ```
+
+---
 
 ## Setup Nuxt
 
@@ -64,16 +74,10 @@ npm run dev
 
 ## Production
 
-Build the application for production:
+Generate the website for production:
 
 ```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
+npm run generate
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
