@@ -56,5 +56,5 @@
     }
   });
   const menu = ref(false);
-  const url = ref('/' + linkResolver(props.blok.link.cached_url));
+  const url = ref(linkResolver(props.blok.link.cached_url));
 </script>

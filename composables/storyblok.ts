@@ -1,33 +1,54 @@
 import { StoryData } from 'storyblok-js-client';
 
 /**
- * Resolve links for routing.
+ * Add real paths from Storyblok here.
+ * In most cases, this only applies to the homepage.
  *
- * @param {string} path
+ * @example
+ * {
+ *   full_slug: realPath
+ * }
+ */
+const realPaths = {
+  home: '/'
+};
+
+/**
+ * Resolve links for internal routing.
+ *
+ * @param {string} full_slug
  * @returns {string} returns path without slash on start
  */
-function linkResolver(path: string): string {
-  return path === 'home' ? '' : path;
+function linkResolver(full_slug: string): string {
+  return realPaths[full_slug] ? realPaths[full_slug] : '/' + full_slug;
 }
 
 /**
- * Resolve path from Router to Storyblok real path.
+ * Resolve path from Router to Storyblok full_slug.
  * Read more: https://www.storyblok.com/cl/real-path-added-to-content-delivery-api
  *
  * @param {string} path
  * @returns {string}
+ * @example realPathResolver('/') => 'home'
  */
 function realPathResolver(path: string): string {
-  return path === '/' ? 'home' : path.substring(1);
+  let realPath = path;
+  for (const [key, value] of Object.entries(realPaths)) {
+    if (value !== path) continue;
+    realPath = key;
+  }
+  return realPath;
 }
 
 /**
  * Implement page SEO from Storyblok Story Data.
  *
  * @param {StoryData} data
- * @param {string} slug
+ * @param {string} path
  */
-function useStoryHead(data: StoryData, slug: string): void {
+function useStoryHead(data: StoryData, path: string): void {
+  if (!data) return;
+  const runtimeConfig = useRuntimeConfig();
   // https://v3.nuxtjs.org/guide/features/head-management#usehead-composable
   useHead({
     htmlAttrs: {
@@ -53,7 +74,7 @@ function useStoryHead(data: StoryData, slug: string): void {
       },
       {
         name: 'og:url',
-        content: 'https://bachelorarbeit.thenextbit.de' + realPathResolver(slug)
+        content: runtimeConfig.public.HOSTNAME + path
       },
       {
         name: 'og:type',

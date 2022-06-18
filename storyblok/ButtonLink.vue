@@ -32,7 +32,7 @@
   const type = ref(props.blok.link.linktype);
   const url = ref(
     type.value === 'story'
-      ? '/' + linkResolver(props.blok.link.cached_url)
+      ? linkResolver(props.blok.link.cached_url)
       : props.blok.link.cached_url
   );
 </script>

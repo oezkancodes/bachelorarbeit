@@ -59,6 +59,6 @@
 
   const url =
     props.blok.link.linktype === 'story'
-      ? '/' + linkResolver(props.blok.link.cached_url)
+      ? linkResolver(props.blok.link.cached_url)
       : props.blok.link.cached_url;
 </script>

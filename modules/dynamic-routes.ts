@@ -46,7 +46,7 @@ export default defineNuxtModule({
           const stories: StoryData[] = res.data.stories;
           let routes: string[] = [];
           // Map stories to accessible paths
-          routes = stories.map((story) => '/' + linkResolver(story.full_slug));
+          routes = stories.map((story) => linkResolver(story.full_slug));
           printRoutes(routes, '✅ Dynamic routes:');
           return routes;
         })
