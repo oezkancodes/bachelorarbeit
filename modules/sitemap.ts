@@ -28,7 +28,7 @@ export default defineNuxtModule({
   setup(options, nuxt) {
     nuxt.hook('generate:done', async () => {
       const storyblokApi = new StoryblokClient({
-        accessToken: process.env.STORYBLOK_ACCESS_TOKEN
+        accessToken: process.env.STORYBLOK_PRIVATE_KEY
       });
 
       // Fetch routes from Storyblok API
