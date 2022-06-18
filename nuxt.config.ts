@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      HOSTNAME: 'https://bachelorarbeit.thenextbit.com',
+      HOSTNAME: 'https://bachelorarbeit.thenextbit.de',
       STORYBLOK_PUBLIC_KEY: 'ph7JGalLdMBpo5QAoDrQLwtt'
     }
   },
