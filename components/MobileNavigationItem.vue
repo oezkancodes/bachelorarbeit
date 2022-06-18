@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blok" class="-m-2 select-none">
+  <div v-if="blok" v-editable="blok" class="-m-2 select-none">
     <button
       v-if="!blok.link.cached_url || blok.sub_items.length > 0"
       class="group flex w-full cursor-pointer items-center justify-between rounded-md p-3 hover:bg-gray-50"

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blok" class="group relative">
+  <div v-if="blok" v-editable="blok" class="group relative">
     <!-- Item -->
     <button
       v-if="!blok.link.cached_url"

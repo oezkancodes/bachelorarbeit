@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
     v-if="blok"
+    v-editable="blok"
     :to="url"
     class="flex w-full cursor-pointer items-center space-x-4 rounded-md p-3 hover:bg-gray-50"
   >
