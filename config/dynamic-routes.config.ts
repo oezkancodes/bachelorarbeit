@@ -26,5 +26,5 @@ export const dynamicRoutes: DynamicRoutesConfig = {
     'configuration/footer',
     'configuration/password'
   ],
-  include: ['/200', '/sitemap.xml']
+  include: ['/fallback', '/sitemap.xml']
 };
