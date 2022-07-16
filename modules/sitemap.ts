@@ -3,6 +3,7 @@ import xml from 'xml';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { defineNuxtModule } from '@nuxt/kit';
 import { linkResolver } from '../composables/storyblok';
+import { dynamicRoutes } from '../config/dynamic-routes.config';
 
 export default defineNuxtModule({
   meta: {
@@ -17,7 +18,7 @@ export default defineNuxtModule({
      * Options inspired from @nuxtjs/sitemap module
      * https://sitemap.nuxtjs.org/usage/sitemap-options/
      */
-    hostname: 'https://bachelorarbeit.netlify.app',
+    hostname: 'https://bachelorarbeit.thenextbit.de',
     path: '/sitemap.xml',
     defaults: {
       changefreq: 'daily',
@@ -26,6 +27,10 @@ export default defineNuxtModule({
     }
   },
   setup(options, nuxt) {
+    /**
+     * ! Nuxt hook generate:done is currently not working.
+     * * Workaround to generate Sitemap with server routes at /server/routes/sitemap.xml.ts
+     */
     nuxt.hook('generate:done', async () => {
       const storyblokApi = new StoryblokClient({
         accessToken: process.env.STORYBLOK_PRIVATE_KEY
@@ -35,19 +40,11 @@ export default defineNuxtModule({
       const stories: StoryData[] = await storyblokApi
         .get('cdn/stories', {
           starts_with: '',
-          // Get routes in recursion when page size exceeds 100
-          per_page: 100,
-          // excluding_routes seems to be ignored
-          excluding_slugs: '/configuration',
+          excluding_slugs: dynamicRoutes.exclude.join(','),
           version: 'published'
         })
         .then((res) => {
-          let stories: StoryData[] = res.data.stories;
-          // Filtering out stories that are not pages, as excluding_routes doesn't work
-          stories = stories.filter(
-            (story) => !story.full_slug.includes('configuration/')
-          );
-          return stories;
+          return res.data.stories as StoryData[];
         })
         .catch((err) => {
           console.log(err);
@@ -64,41 +61,18 @@ export default defineNuxtModule({
         })
       );
 
-      const indexItem = {
-        // Build index item
-        url: [
-          {
-            loc: options.hostname
-          },
-          {
-            lastmod: new Date(
-              Math.max.apply(
-                null,
-                pages.map((page) => {
-                  return new Date(page.lastModified ?? page.created);
-                })
-              )
-            )
-              .toISOString()
-              .split('T')[0]
-          },
-          { changefreq: 'daily' },
-          { priority: '1.0' }
-        ]
-      };
-
       const sitemapItems = pages.reduce(function (items, item) {
         // Build page items
         items.push({
           url: [
-            {
-              loc: `${options.hostname}/${item.slug}`
-            },
+            { loc: options.hostname + item.slug },
             {
               lastmod: new Date(item.lastModified ?? item.created)
                 .toISOString()
                 .split('T')[0]
-            }
+            },
+            { changefreq: options.defaults.changefreq },
+            { priority: options.defaults.priority }
           ]
         });
         return items;
@@ -111,7 +85,6 @@ export default defineNuxtModule({
               xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9'
             }
           },
-          indexItem,
           ...sitemapItems
         ]
       };
