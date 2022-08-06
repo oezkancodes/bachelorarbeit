@@ -4,20 +4,7 @@ import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { NitroConfig } from 'nitropack';
 import { defineNuxtModule } from '@nuxt/kit';
 import { linkResolver } from '../composables/storyblok';
-
-type Redirect = {
-  to: {
-    url: string;
-    cached_url: string;
-    linktype: 'url' | 'story';
-  };
-  from: {
-    url: string;
-    cached_url: string;
-    linktype: 'url' | 'story';
-  };
-  status: 200 | 301 | 302 | 404;
-};
+import { Redirect } from '~/@types/Redirect';
 
 export default defineNuxtModule({
   setup(_options, nuxt) {
