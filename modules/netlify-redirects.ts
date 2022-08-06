@@ -31,7 +31,7 @@ export default defineNuxtModule({
         accessToken: nuxt.options.runtimeConfig.public.STORYBLOK_PUBLIC_KEY
       });
       await storyblokApi
-        .get('cdn/stories/configuration/redirect', { version: 'published' })
+        .get('cdn/stories/configuration/redirects', { version: 'published' })
         .then((res) => {
           const story: StoryData = res.data.story;
           redirects = story.content.redirects;
