@@ -10,3 +10,4 @@ dist
 *.pem
 
 /public/_redirects
+/public/_headers
