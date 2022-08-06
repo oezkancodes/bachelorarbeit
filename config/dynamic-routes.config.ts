@@ -24,7 +24,8 @@ export const dynamicRoutes: DynamicRoutesConfig = {
   exclude: [
     'configuration/navigation',
     'configuration/footer',
-    'configuration/password'
+    'configuration/password',
+    'configuration/redirects'
   ],
   include: ['/sitemap.xml']
 };
