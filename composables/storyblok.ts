@@ -14,7 +14,8 @@ const realPaths = {
 };
 
 /**
- * Resolve links for internal routing.
+ * Resolve real_slug from Storyblok to path for internalrouting.
+ * Returns path with slash on start.
  *
  * @param {string} full_slug
  * @returns {string} returns path without slash on start

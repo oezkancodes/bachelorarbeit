@@ -47,7 +47,7 @@ export default defineNuxtModule({
           let routes: string[] = [];
           // Map stories to accessible paths
           routes = stories.map((story) => linkResolver(story.full_slug));
-          printRoutes(routes, '✅ Dynamic routes:');
+          printRoutes(routes, 'ℹ️ Dynamic routes:');
           return routes;
         })
         .catch(() => {
@@ -58,7 +58,7 @@ export default defineNuxtModule({
       if (routes === null || !Array.isArray(routes)) return;
       // Empty Array
       if (Array.isArray(routes) && routes.length === 0) {
-        console.warn('⚠️ Dynamic routes fetched, but empty.');
+        console.warn('⚠️ Dynamic routes fetched, but is empty.');
       }
       if (Array.isArray(options.include)) {
         options.include.forEach((path) => {
