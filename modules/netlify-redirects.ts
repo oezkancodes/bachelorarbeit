@@ -21,6 +21,10 @@ type Redirect = {
 
 export default defineNuxtModule({
   setup(_options, nuxt) {
+    /**
+     * Build hook nitro:config is currently only a workaround,
+     * because the generate:done hook is not working.
+     */
     nuxt.hook('nitro:config', async (nitroConfig: NitroConfig) => {
       // Skip on development
       if (nitroConfig.dev) return;
@@ -57,8 +61,11 @@ export default defineNuxtModule({
       console.groupEnd();
 
       // Create _redirects file
-      writeFile(nitroConfig.rootDir + '/dist/_redirects', _redirects, (err) =>
-        err ? console.error(err) : null
+      writeFile(
+        // When generete:done hook is working, change output dir to /dist/...
+        nuxt.options.rootDir + '/public/_redirects',
+        _redirects,
+        (err) => (err ? console.error(err) : null)
       );
     });
   }
