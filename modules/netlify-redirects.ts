@@ -58,7 +58,6 @@ export default defineNuxtModule({
       );
     });
 
-    if (!nuxt.options.dev) return;
     /**
      * Remove _redirects file from /public
      */
