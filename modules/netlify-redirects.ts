@@ -1,5 +1,5 @@
 // import { writeFile } from 'fs';
-import { writeFile } from 'fs';
+import { writeFile, unlink } from 'fs';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { NitroConfig } from 'nitropack';
 import { defineNuxtModule } from '@nuxt/kit';
@@ -65,8 +65,20 @@ export default defineNuxtModule({
         // When generete:done hook is working, change output dir to /dist/...
         nuxt.options.rootDir + '/public/_redirects',
         _redirects,
-        (err) => (err ? console.error(err) : null)
+        (err) => {
+          if (!err) console.log('ℹ️ Created _redirect file to /public');
+        }
       );
+    });
+
+    if (!nuxt.options.dev) return;
+    /**
+     * Remove _redirects file from /public
+     */
+    nuxt.hook('close', () => {
+      unlink(nuxt.options.rootDir + '/public/_redirects', (err) => {
+        if (err) console.error(err);
+      });
     });
   }
 });

@@ -8,3 +8,5 @@ node_modules
 dist
 .vscode
 *.pem
+
+/public/_redirects
