@@ -16,7 +16,7 @@ type Redirect = {
     cached_url: string;
     linktype: 'url' | 'story';
   };
-  status: 301 | 302;
+  status: 200 | 301 | 302 | 404;
 };
 
 export default defineNuxtModule({
