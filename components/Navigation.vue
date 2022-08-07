@@ -89,7 +89,7 @@
       const res: Story = await storyblokApi.get(
         'cdn/stories/configuration/navigation',
         {
-          version: 'draft'
+          version: 'published'
         }
       );
       return res.data.story;

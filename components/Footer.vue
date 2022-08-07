@@ -51,7 +51,7 @@
       const res: Story = await storyblokApi.get(
         'cdn/stories/configuration/footer',
         {
-          version: 'draft'
+          version: 'published'
         }
       );
       return res.data.story;
