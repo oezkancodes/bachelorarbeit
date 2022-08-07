@@ -53,7 +53,7 @@
   /**
    * SEO
    *
-   * For SEO use the useStoryHead composable, which is basen on the useHead composable.
+   * For SEO use the useStoryHead composable, which is based on the useHead composable.
    * Or use the Meta Components inside the template. The related data is stored in seo as ref.
    */
   // useStoryHead(data.value, route.path);
