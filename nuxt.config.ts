@@ -33,7 +33,8 @@ export default defineNuxtConfig({
     // Custom Modules
     ['./modules/dynamic-routes', dynamicRoutes],
     './modules/sitemap',
-    './modules/netlify-redirects'
+    './modules/netlify-redirects',
+    './modules/netlify-password-protection'
   ],
 
   buildModules: [['@storyblok/nuxt', storyblok]]
