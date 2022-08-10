@@ -32,9 +32,10 @@ export default defineNuxtConfig({
 
     // Custom Modules
     ['./modules/dynamic-routes', dynamicRoutes],
-    './modules/sitemap',
     './modules/netlify-redirects',
     './modules/netlify-password-protection'
+    // Sitemap module disabled because alternative solution with server routes is used
+    // './modules/sitemap',
   ],
 
   buildModules: [['@storyblok/nuxt', storyblok]]

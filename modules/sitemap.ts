@@ -1,6 +1,7 @@
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { writeFile, unlink } from 'fs';
 import xml from 'xml';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
+import { NitroConfig } from 'nitropack';
 import { defineNuxtModule } from '@nuxt/kit';
 import { linkResolver } from '../composables/storyblok';
 import { dynamicRoutes } from '../config/dynamic-routes.config';
@@ -13,11 +14,11 @@ export default defineNuxtModule({
       nuxt: '^3.0.0'
     }
   },
+  /**
+   * Options inspired from @nuxtjs/sitemap module
+   * https://sitemap.nuxtjs.org/usage/sitemap-options/
+   */
   defaults: {
-    /**
-     * Options inspired from @nuxtjs/sitemap module
-     * https://sitemap.nuxtjs.org/usage/sitemap-options/
-     */
     hostname: 'https://bachelorarbeit.thenextbit.de',
     path: '/sitemap.xml',
     defaults: {
@@ -28,12 +29,17 @@ export default defineNuxtModule({
   },
   setup(options, nuxt) {
     /**
-     * ! Nuxt hook generate:done is currently not working.
-     * * Workaround to generate Sitemap with server routes at /server/routes/sitemap.xml.ts
+     * Build hook nitro:config is currently only a workaround,
+     * because the generate:done hook is not working.
+     *
+     * Alternative solution for sitemap with server routes at /server/routes/sitemap.xml.ts
      */
-    nuxt.hook('generate:done', async () => {
+    nuxt.hook('nitro:config', async (nitroConfig: NitroConfig) => {
+      // Skip on development
+      if (nitroConfig.dev) return;
+
       const storyblokApi = new StoryblokClient({
-        accessToken: process.env.STORYBLOK_PRIVATE_KEY
+        accessToken: nuxt.options.runtimeConfig.public.STORYBLOK_PUBLIC_KEY
       });
 
       // Fetch routes from Storyblok API
@@ -89,19 +95,26 @@ export default defineNuxtModule({
         ]
       };
 
-      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>${xml(
-        sitemapObject
-      )}`;
+      const sitemap =
+        '<?xml version="1.0" encoding="UTF-8"?>' + xml(sitemapObject);
 
-      if (!existsSync(nuxt.options.rootDir + '/dist')) {
-        mkdirSync(nuxt.options.rootDir + '/dist');
-      }
-      writeFileSync(
-        nuxt.options.rootDir + '/dist' + options.path,
+      writeFile(
+        // When generete:done hook is working, change output dir to /dist/...
+        nuxt.options.rootDir + '/public' + options.path,
         sitemap,
-        'utf8'
+        (err) => {
+          if (!err) console.log('ℹ️ Created sitemap file to /public');
+        }
       );
-      console.log('✅ Generate Sitemap success.');
+    });
+
+    /**
+     * Remove _redirects file from /public
+     */
+    nuxt.hook('close', () => {
+      unlink(nuxt.options.rootDir + '/public/_redirects', (err) => {
+        if (err) console.error(err);
+      });
     });
   }
 });
