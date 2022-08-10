@@ -1,5 +1,5 @@
 /**
- * Config for custom module nuxt.dynamic-routes.ts
+ * Config for custom module `nuxt.dynamic-routes.ts`.
  *
  * @default
  * {
@@ -9,12 +9,10 @@
 interface DynamicRoutesConfig {
   /** Exclude slugs for exclude_slug fields in Storyblok API.
    *  Don't use slash at beginning.
-   *
    * @example ['foo', 'foo/bar']
    */
   exclude?: string[];
-  /** Include paths in SSG
-   *
+  /** Include paths in SSG.
    * @example ['/foo', '/foo/bar']
    */
   include?: string[];

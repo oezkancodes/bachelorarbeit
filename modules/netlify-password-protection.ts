@@ -7,6 +7,16 @@ import { linkResolver } from '../composables/storyblok';
 import { ProtectedRoute } from '~/@types/ProtectedRoute';
 
 export default defineNuxtModule({
+  meta: {
+    name: 'netlify-password-protection',
+    configKey: 'netlifyPasswordProtection',
+    compatibility: {
+      nuxt: '^3.0.0'
+    }
+  },
+
+  defaults: {},
+
   setup(_options, nuxt) {
     /**
      * Build hook nitro:config is currently only a workaround,

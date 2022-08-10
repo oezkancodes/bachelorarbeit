@@ -2,7 +2,7 @@
   <main v-if="data">
     <!-- Layout -->
     <NuxtLayout :name="data.content.layout || 'default'">
-      <!-- SEO with Meta Components https://v3.nuxtjs.org/guide/features/head-management#meta-components -->
+      <!-- SEO with Meta Components -->
       <Head>
         <Title>{{ seo.title }}</Title>
         <Meta name="description" :content="seo.description" />
@@ -14,7 +14,7 @@
         <Meta name="og:locale" :content="seo.locale" />
       </Head>
 
-      <!-- Storyblok -->
+      <!-- Bloks -->
       <component :is="data.content.component" :blok="data.content" />
     </NuxtLayout>
   </main>
@@ -26,6 +26,7 @@
 
   const route = useRoute();
   const storyblokApi = useStoryblokApi();
+  const runtimeConfig = useRuntimeConfig();
 
   // Fetch Story
   const { data, error } = await useAsyncData(route.path, async () => {
@@ -43,7 +44,7 @@
   }
 
   /**
-   * Disable layout for manual control
+   * Disable layout for manual control.
    * https://v3.nuxtjs.org/guide/directory-structure/layouts#example-manual-control-with-pages
    */
   definePageMeta({
@@ -51,24 +52,22 @@
   });
 
   /**
-   * SEO
-   *
-   * For SEO use the useStoryHead composable, which is based on the useHead composable.
+   * For SEO use the custom useStoryHead composable, which is based on the useHead composable.
    * Or use the Meta Components inside the template. The related data is stored in seo as ref.
+   * https://v3.nuxtjs.org/guide/features/head-management
    */
-  // useStoryHead(data.value, route.path);
   const seo = ref<PageSEO>({
     title: data.value.content.seo_title,
     description: data.value.content.seo_description,
     image: data.value.content.seo_image.filename,
-    url: 'https://bachelorarbeit.thenextbit.de' + route.path,
+    url: runtimeConfig.public.HOSTNAME + route.path,
     type: 'website',
     locale: 'de_DE'
   });
 
   onMounted(() => {
     if (!data.value) return;
-    // Listen for changes from Storyblok visual editor
+    // Listen for changes from Storybloks visual editor
     useStoryblokBridge(
       data.value.id,
       (evStory: StoryData) => (data.value = evStory)

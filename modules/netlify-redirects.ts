@@ -1,4 +1,3 @@
-// import { writeFile } from 'fs';
 import { writeFile, unlink } from 'fs';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { NitroConfig } from 'nitropack';
@@ -7,6 +6,16 @@ import { linkResolver } from '../composables/storyblok';
 import { Redirect } from '~/@types/Redirect';
 
 export default defineNuxtModule({
+  meta: {
+    name: 'netlify-redirects',
+    configKey: 'netlifyRedirects',
+    compatibility: {
+      nuxt: '^3.0.0'
+    }
+  },
+
+  defaults: {},
+
   setup(_options, nuxt) {
     /**
      * Build hook nitro:config is currently only a workaround,

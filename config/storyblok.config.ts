@@ -2,7 +2,7 @@
  * https://github.com/storyblok/storyblok-nuxt#options
  * @default
  * {
-    accessToken: "<your-access-token>",
+    accessToken: '<your-access-token>',
     bridge: true,
     apiOptions: {}, // storyblok-js-client options
     useApiClient: true
