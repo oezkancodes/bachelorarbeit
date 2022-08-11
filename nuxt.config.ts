@@ -10,10 +10,6 @@ import { dynamicRoutes } from './config/dynamic-routes.config';
 export default defineNuxtConfig({
   target: 'static',
 
-  generate: {
-    fallback: '404.html'
-  },
-
   runtimeConfig: {
     public: {
       HOSTNAME: 'https://bachelorarbeit.thenextbit.de',
