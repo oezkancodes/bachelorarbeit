@@ -26,5 +26,5 @@ export const dynamicRoutes: DynamicRoutesConfig = {
     'configuration/redirects',
     'configuration/protected-routes'
   ],
-  include: ['/sitemap.xml']
+  include: ['/sitemap.xml', '/404.html']
 };
