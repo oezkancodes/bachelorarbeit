@@ -47,7 +47,7 @@ export default defineNuxtModule({
           let routes: string[] = [];
           // Map stories to accessible paths
           routes = stories.map((story) => linkResolver(story.full_slug));
-          printRoutes(routes, 'ℹ️ Dynamic routes:');
+          printRoutes(routes, '❕ Dynamic routes:');
           return routes;
         })
         .catch(() => {
@@ -65,10 +65,10 @@ export default defineNuxtModule({
           if (typeof path !== 'string') return;
           routes.push(path);
         });
-        printRoutes(options.include, 'ℹ️ Included routes:');
+        printRoutes(options.include, '❕ Included routes:');
       }
       if (Array.isArray(options.exclude)) {
-        printRoutes(options.exclude, 'ℹ️ Excluded routes:');
+        printRoutes(options.exclude, '❕ Excluded routes:');
       }
       // Inject routes for prerender
       routes.forEach((path) => nitroConfig.prerender.routes.push(path));

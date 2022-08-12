@@ -40,11 +40,14 @@ export default defineNuxtModule({
           console.log(err);
         });
 
-      console.group('ℹ️ Redirects:');
+      console.group(
+        redirects.length ? '❕ Redirects:' : '⚠️ No redirects found'
+      );
 
       let _redirects = '# Redirects';
       const LN = '\n';
       const INDENT = '  ';
+
       redirects.forEach(({ from, to, status }) => {
         const fromUrl =
           from.linktype === 'url' ? from.url : linkResolver(from.cached_url);
@@ -62,7 +65,7 @@ export default defineNuxtModule({
         nuxt.options.rootDir + '/public/_redirects',
         _redirects,
         (err) => {
-          if (!err) console.log('ℹ️ Created _redirect file to /public');
+          if (!err) console.log('✅ Created _redirect file to /public');
         }
       );
     });

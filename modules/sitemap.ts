@@ -104,7 +104,7 @@ export default defineNuxtModule({
         nuxt.options.rootDir + '/public' + options.path,
         sitemap,
         (err) => {
-          if (!err) console.log('ℹ️ Created sitemap file to /public');
+          if (!err) console.log('✅ Created sitemap file to /public');
         }
       );
     });

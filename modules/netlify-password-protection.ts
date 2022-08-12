@@ -43,7 +43,11 @@ export default defineNuxtModule({
           console.log(err);
         });
 
-      console.group('ℹ️ Protected Routes:');
+      console.group(
+        protectedRoutes.length
+          ? '❕ Protected Routes:'
+          : '⚠️ No protected routes found'
+      );
 
       const LN = '\n';
       const INDENT = '  ';
@@ -67,7 +71,7 @@ export default defineNuxtModule({
         nuxt.options.rootDir + '/public/_headers',
         _headers,
         (err) => {
-          if (!err) console.log('ℹ️ Created _redirect file to /public');
+          if (!err) console.log('✅ Created _headers file to /public');
         }
       );
     });
