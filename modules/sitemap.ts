@@ -19,7 +19,6 @@ export default defineNuxtModule({
    * https://sitemap.nuxtjs.org/usage/sitemap-options/
    */
   defaults: {
-    hostname: 'https://bachelorarbeit.thenextbit.de',
     path: '/sitemap.xml',
     defaults: {
       changefreq: 'daily',
@@ -71,7 +70,9 @@ export default defineNuxtModule({
         // Build page items
         items.push({
           url: [
-            { loc: options.hostname + item.slug },
+            {
+              loc: nuxt.options.runtimeConfig.public.HOSTNAME + item.slug
+            },
             {
               lastmod: new Date(item.lastModified ?? item.created)
                 .toISOString()
