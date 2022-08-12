@@ -13,33 +13,35 @@ Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungssz
 | Bereich            | Technologie                              | Notizen                                                                      |
 | :----------------- | :--------------------------------------- | :--------------------------------------------------------------------------- |
 | Frontend Framework | [Nuxt.js](https://v3.nuxtjs.org/)        | [Nuxt 3 (Beta) Release Candidate](https://nuxtjs.org/announcements/nuxt3-rc) |
-| CSS Framework      | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
 | Headless CMS       | [Storyblok](https://www.storyblok.com/)  |                                                                              |
-| Hosting            | [Netlify](https://netlify.com/)          | [Live Demo](https://bachelorarbeit.thenextbit.de/)                           |
+| CSS Framework      | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
+| Hosting            | [Netlify](https://netlify.com/)          | [Zur Live Website](https://bachelorarbeit.thenextbit.de/)                    |
 
 ---
 
-## Setup Storyblok (optional)
+## Storyblok einrichten (optional)
 
-### 1. Add private API key
+### 1. Private API-Key hinzufügen
 
-> 💡 This step is completely optional, as a public key for API requests is integrated.
+> 💡 Dieser Schritt ist optional, da ein Public API-Key als Fallback integriert ist.
 
-Setup `STORYBLOK_PRIVATE_KEY` environment variable inside `.env`. Get the key from the Storyblok Settings → API-Keys. This step is optional because a public key is already used.
+Der Private API-Key muss in die Umgebungsvariable `STORYBLOK_PRIVATE_KEY` in `.env`.
 
-### 2. Storyblok v2 visual editor for local development
+### 2. Storyblok v2 visueller Editor für die lokale Entwicklung
 
-> 💡 This step is completely optional if you have no access to Storyblok dashboard or are using Storyblok v1.
+> 💡 Dieser Schritt ist optional, wenn Sie keinen Zugang zum Storyblok-Dashboard haben oder Storyblok v1 verwenden.
 
-Storyblok v2 requires to be served via HTTPS. [Learn more](https://www.storyblok.com/faq/.setting-up-https-on-localhost-in-nuxt-3).
+Der visuelle Editor für die lokale Entwicklung läuft in Storyblok v2 nur über https.
 
-1\. Create certificate with [mkcert](https://github.com/FiloSottile/mkcert):
+Installieren Sie zunächst [mkcert](https://github.com/FiloSottile/mkcert) auf ihrem Rechner.
+
+Dann erstellen Sie ein Zertifikat:
 
 ```bash
 mkcert localhost
 ```
 
-2\. Run in HTTPS:
+Dann führen Sie Nuxt in https aus:
 
 ```bash
 npm run dev:https
@@ -47,11 +49,9 @@ npm run dev:https
 
 ---
 
-## Setup Nuxt
+## Nuxt einrichten
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
-
-Make sure to install the dependencies:
+Stellen Sie sicher, dass Sie die Abhängigkeiten installieren:
 
 ```bash
 # yarn
@@ -64,20 +64,28 @@ npm install
 pnpm install --shamefully-hoist
 ```
 
-## Development Server
+## Node.js Version
 
-Start the development server on http://localhost:3000
+Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der Datei `.nvmrc` definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen.
+
+## Entwicklungsserver
+
+Starten Sie den Entwicklungsserver unter http://localhost:3000
 
 ```bash
 npm run dev
 ```
 
-## Production
+## Produktion
 
-Generate the website for production:
+Generieren Sie die Website für die Produktion:
 
 ```bash
 npm run generate
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+Weitere Informationen finden Sie in der [Dokumentation zum Deployment](https://v3.nuxtjs.org/guide/deploy/presets).
+
+## Mehr erfahren
+
+Mehr können Sie in der [Nuxt 3 Dokumentation](https://v3.nuxtjs.org) erfahren.
