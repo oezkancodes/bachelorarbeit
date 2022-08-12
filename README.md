@@ -49,6 +49,10 @@ npm run dev:https
 
 ---
 
+## ⚠️ Node.js Version
+
+Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der Datei `.nvmrc` definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen.
+
 ## Nuxt einrichten
 
 Stellen Sie sicher, dass Sie die Abhängigkeiten installieren:
@@ -63,10 +67,6 @@ npm install
 # pnpm
 pnpm install --shamefully-hoist
 ```
-
-## Node.js Version
-
-Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der Datei `.nvmrc` definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen.
 
 ## Entwicklungsserver
 
