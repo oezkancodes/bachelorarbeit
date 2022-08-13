@@ -1,4 +1,3 @@
-// import { writeFile } from 'fs';
 import { writeFile, unlink } from 'fs';
 import StoryblokClient, { StoryData } from 'storyblok-js-client';
 import { NitroConfig } from 'nitropack';

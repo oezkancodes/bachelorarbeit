@@ -4,10 +4,7 @@ import { StoryData } from 'storyblok-js-client';
  * Add real paths from Storyblok here.
  * In most cases, this only applies to the homepage.
  *
- * @example
- * {
- *   full_slug: realPath
- * }
+ * @example { full_slug: realPath }
  */
 const realPaths = {
   home: '/'
@@ -44,34 +41,34 @@ function realPathResolver(path: string): string {
 /**
  * Implement page SEO from Storyblok Story Data.
  *
- * @param {StoryData} data
+ * @param {StoryData} story
  * @param {string} path
  */
-function useStoryHead(data: StoryData, path: string): void {
-  if (!data) return;
+function useStoryHead(story: StoryData, path: string): void {
+  if (!story) return;
   const runtimeConfig = useRuntimeConfig();
   // https://v3.nuxtjs.org/guide/features/head-management#usehead-composable
   useHead({
     htmlAttrs: {
       lang: 'de'
     },
-    title: data.content.seo_title,
+    title: story.content.seo_title,
     meta: [
       {
         name: 'description',
-        content: data.content.seo_description
+        content: story.content.seo_description
       },
       {
         name: 'og:title',
-        content: data.content.seo_title
+        content: story.content.seo_title
       },
       {
         name: 'og:description',
-        content: data.content.seo_description
+        content: story.content.seo_description
       },
       {
         name: 'og:image',
-        content: data.content.seo_image.filename
+        content: story.content.seo_image.filename
       },
       {
         name: 'og:url',
