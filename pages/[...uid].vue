@@ -50,7 +50,7 @@
       '/api/storyblok-preview?real_path=' + realPathResolver(route.path)
     );
     // Update story
-    story.value = data.value as StoryData;
+    if (data.value) story.value = data.value as StoryData;
   }
 
   /**
