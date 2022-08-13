@@ -18,6 +18,7 @@
       v-if="type === 'url'"
       :href="url"
       class="-m-4 flex items-start rounded-lg p-3 hover:bg-gray-50"
+      :target="blok.new_tab ? '_blank' : null"
     >
       <StoryblokImage class="h-6 w-6 flex-shrink-0" :image="blok.icon" />
 
