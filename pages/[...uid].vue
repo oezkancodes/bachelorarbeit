@@ -1,7 +1,7 @@
 <template>
-  <main v-if="data">
+  <main v-if="story">
     <!-- Layout -->
-    <NuxtLayout :name="data.content.layout || 'default'">
+    <NuxtLayout :name="story.content.layout || 'default'">
       <!-- SEO with Meta Components -->
       <Head>
         <Title>{{ seo.title }}</Title>
@@ -15,7 +15,7 @@
       </Head>
 
       <!-- Bloks -->
-      <component :is="data.content.component" :blok="data.content" />
+      <component :is="story.content.component" :blok="story.content" />
     </NuxtLayout>
   </main>
 </template>
@@ -29,7 +29,7 @@
   const runtimeConfig = useRuntimeConfig();
 
   // Fetch Story
-  const { data, error } = await useAsyncData(route.path, async () => {
+  const { data: story, error } = await useAsyncData(route.path, async () => {
     const res: Story = await storyblokApi.get(
       'cdn/stories/' + realPathResolver(route.path),
       {
@@ -41,6 +41,16 @@
 
   if (error.value) {
     throwError('Story not found');
+  }
+
+  // Handle Storyblok Live Editor
+  if (route.query._storyblok) {
+    // Fetch preview from API
+    const { data } = await useFetch(
+      '/api/storyblok-preview?real_path=' + realPathResolver(route.path)
+    );
+    // Update story
+    story.value = data.value as StoryData;
   }
 
   /**
@@ -57,20 +67,20 @@
    * https://v3.nuxtjs.org/guide/features/head-management
    */
   const seo = ref<PageSEO>({
-    title: data.value.content.seo_title,
-    description: data.value.content.seo_description,
-    image: data.value.content.seo_image.filename,
+    title: story.value.content.seo_title,
+    description: story.value.content.seo_description,
+    image: story.value.content.seo_image.filename,
     url: runtimeConfig.public.HOSTNAME + route.path,
     type: 'website',
     locale: 'de_DE'
   });
 
   onMounted(() => {
-    if (!data.value) return;
+    if (!story.value) return;
     // Listen for changes from Storybloks visual editor
     useStoryblokBridge(
-      data.value.id,
-      (evStory: StoryData) => (data.value = evStory)
+      story.value.id,
+      (evStory: StoryData) => (story.value = evStory)
     );
   });
 </script>
