@@ -29,22 +29,27 @@
   const runtimeConfig = useRuntimeConfig();
 
   // Fetch Story
-  const { data: story, error } = await useAsyncData(route.path, async () => {
-    const res: Story = await storyblokApi.get(
-      'cdn/stories/' + realPathResolver(route.path),
-      {
-        version: 'published'
-      }
-    );
-    return res.data.story;
-  });
+  const story = ref<StoryData>(null);
 
-  if (error.value) {
-    throwError('Story not found');
-  }
+  if (!route.query._storyblok) {
+    // Fetch published version
+    const { data, error } = await useAsyncData(route.path, async () => {
+      const res: Story = await storyblokApi.get(
+        'cdn/stories/' + realPathResolver(route.path),
+        {
+          version: 'published'
+        }
+      );
+      return res.data.story;
+    });
 
-  // Handle Storyblok Live Editor
-  if (route.query._storyblok) {
+    story.value = data.value;
+
+    if (error.value) {
+      throwError('Story not found');
+    }
+  } else {
+    // Handle Storyblok Live Editor
     // Fetch preview from API
     const { data } = await useFetch(
       '/api/storyblok-preview?real_path=' + realPathResolver(route.path)
