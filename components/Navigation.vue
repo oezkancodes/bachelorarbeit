@@ -79,7 +79,7 @@
 </template>
 
 <script setup lang="ts">
-  import { MenuIcon, XIcon } from '@heroicons/vue/outline';
+  import { MenuIcon, XIcon } from '@heroicons/vue/outline/index.js';
   import { Story } from 'storyblok-js-client';
 
   // Fetch Story

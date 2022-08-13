@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-  import { PlusIcon } from '@heroicons/vue/outline';
+  import { PlusIcon } from '@heroicons/vue/outline/index.js';
 
   const props = defineProps({
     blok: {

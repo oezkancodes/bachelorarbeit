@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-  import { ChevronDownIcon } from '@heroicons/vue/outline';
+  import { ChevronDownIcon } from '@heroicons/vue/outline/index.js';
 
   const props = defineProps({
     blok: {
