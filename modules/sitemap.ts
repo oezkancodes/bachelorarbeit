@@ -67,7 +67,7 @@ export default defineNuxtModule({
       );
 
       const sitemapItems = pages.reduce(function (items, item) {
-        // Build page items
+        // Push page items
         items.push({
           url: [
             {
@@ -109,9 +109,7 @@ export default defineNuxtModule({
       );
     });
 
-    /**
-     * Remove _redirects file from /public
-     */
+    // Remove _redirects file from /public
     nuxt.hook('close', () => {
       unlink(nuxt.options.rootDir + '/public/_redirects', (err) => {
         if (err) console.error(err);

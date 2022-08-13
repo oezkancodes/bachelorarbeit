@@ -54,12 +54,16 @@ export default defineNuxtModule({
           console.error("🔴 Couldn't fetch dynamic routes.");
           return null;
         });
+
       // Error handling
       if (routes === null || !Array.isArray(routes)) return;
-      // Empty Array
+
+      // No dynamic routes
       if (Array.isArray(routes) && routes.length === 0) {
         console.warn('⚠️ Dynamic routes fetched, but is empty.');
       }
+
+      // Include routes
       if (Array.isArray(options.include)) {
         options.include.forEach((path) => {
           if (typeof path !== 'string') return;
@@ -67,11 +71,19 @@ export default defineNuxtModule({
         });
         printRoutes(options.include, '❕ Included routes:');
       }
+
+      // Exclude routes
       if (Array.isArray(options.exclude)) {
         printRoutes(options.exclude, '❕ Excluded routes:');
       }
+
       // Inject routes for prerender
-      routes.forEach((path) => nitroConfig.prerender.routes.push(path));
+      console.group('❕ Generating routes:');
+      routes.forEach((path) => {
+        console.log('  📄 ' + path);
+        nitroConfig.prerender.routes.push(path);
+      });
+      console.groupEnd();
     });
   }
 });
@@ -80,6 +92,6 @@ function printRoutes(routes: string[], message: string): void {
   if (!Array.isArray(routes)) return;
   console.group();
   console.log(message);
-  routes.forEach((route) => console.log('   📄 ' + route));
+  routes.forEach((route) => console.log('  📄 ' + route));
   console.groupEnd();
 }

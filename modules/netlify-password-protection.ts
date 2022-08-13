@@ -76,9 +76,7 @@ export default defineNuxtModule({
       );
     });
 
-    /**
-     * Remove _headers file from /public
-     */
+    // Remove _headers file from /public
     nuxt.hook('close', () => {
       unlink(nuxt.options.rootDir + '/public/_headers', (err) => {
         if (err) console.error(err);

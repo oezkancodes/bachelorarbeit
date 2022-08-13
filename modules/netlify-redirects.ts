@@ -53,7 +53,7 @@ export default defineNuxtModule({
           from.linktype === 'url' ? from.url : linkResolver(from.cached_url);
         const toUrl =
           to.linktype === 'url' ? to.url : linkResolver(to.cached_url);
-        console.log('   ➡️ ' + fromUrl + INDENT + toUrl + INDENT + status);
+        console.log('  ➡️ ' + fromUrl + INDENT + toUrl + INDENT + status);
         _redirects += LN + fromUrl + INDENT + toUrl + INDENT + status;
       });
 
@@ -70,9 +70,7 @@ export default defineNuxtModule({
       );
     });
 
-    /**
-     * Remove _redirects file from /public
-     */
+    // Remove _redirects file from /public
     nuxt.hook('close', () => {
       unlink(nuxt.options.rootDir + '/public/_redirects', (err) => {
         if (err) console.error(err);
