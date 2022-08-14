@@ -17,7 +17,67 @@ Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungssz
 | CSS Framework      | [Tailwind CSS](https://tailwindcss.com/) | Tailwind v3                                                                  |
 | Hosting            | [Netlify](https://netlify.com/)          | [Zur Live Website](https://bachelorarbeit.thenextbit.de/)                    |
 
----
+## ⚠️ Node.js Version
+
+Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der [Datei `.nvmrc`](.nvmrc) definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen mehrere Node Versionen auf Ihrem Rechner zu verwalten.
+
+## Nuxt einrichten
+
+Stellen Sie sicher, dass Sie die Abhängigkeiten installieren:
+
+```bash
+npm install
+```
+
+## Entwicklungsserver
+
+Starten Sie den Entwicklungsserver unter http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Produktion
+
+Generieren Sie die Website für die Produktion:
+
+```bash
+npm run generate
+```
+
+Achten Sie auf die Konsole. Es werden Ihnen wichtige Informationen zum Generierungsprozess mitgeteilt. Im Folgenden ein Ausschnitt:
+
+```
+❕ Dynamic routes:
+  📄 /solutions
+  📄 /
+❕ Included routes:
+  📄 /sitemap.xml
+  📄 /404.html
+❕ Excluded routes:
+  📄 configuration/navigation
+  📄 configuration/footer
+  📄 configuration/password
+  📄 configuration/redirects
+  📄 configuration/protected-routes
+❕ Generating routes:
+  📄 /solutions
+  📄 /
+  📄 /sitemap.xml
+  📄 /404.html
+❕ Redirects:
+  ➡️ /301-weiterleitung  /  301
+  ➡️ /302-weiterleitung  /  302
+✅ Created _redirect file to /public
+⚠️ No protected routes found
+✅ Created _headers file to /public
+```
+
+Weitere Informationen finden Sie in der [Dokumentation zum Deployment](https://v3.nuxtjs.org/guide/deploy/presets).
+
+## Mehr zu Nuxt
+
+Mehr können Sie in der [Nuxt 3 Dokumentation](https://v3.nuxtjs.org) erfahren.
 
 ## Storyblok einrichten (optional)
 
@@ -46,46 +106,3 @@ Dann führen Sie Nuxt in https aus:
 ```bash
 npm run dev:https
 ```
-
----
-
-## ⚠️ Node.js Version
-
-Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der Datei `.nvmrc` definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen.
-
-## Nuxt einrichten
-
-Stellen Sie sicher, dass Sie die Abhängigkeiten installieren:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Entwicklungsserver
-
-Starten Sie den Entwicklungsserver unter http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Produktion
-
-Generieren Sie die Website für die Produktion:
-
-```bash
-npm run generate
-```
-
-Weitere Informationen finden Sie in der [Dokumentation zum Deployment](https://v3.nuxtjs.org/guide/deploy/presets).
-
-## Mehr erfahren
-
-Mehr können Sie in der [Nuxt 3 Dokumentation](https://v3.nuxtjs.org) erfahren.
