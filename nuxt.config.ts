@@ -2,7 +2,7 @@ import { defineNuxtConfig } from 'nuxt';
 import eslintPlugin from 'vite-plugin-eslint';
 import svgLoader from 'vite-svg-loader';
 
-import { storyblok } from './config/storyblok.config';
+import { storyblok, storyblokPublicKey } from './config/storyblok.config';
 import { tailwindcss } from './config/tailwindcss.config';
 import { dynamicRoutes } from './config/dynamic-routes.config';
 
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       HOSTNAME: 'https://bachelorarbeit.thenextbit.de',
-      STORYBLOK_PUBLIC_KEY: 'ph7JGalLdMBpo5QAoDrQLwtt'
+      STORYBLOK_PUBLIC_KEY: storyblokPublicKey
     }
   },
 

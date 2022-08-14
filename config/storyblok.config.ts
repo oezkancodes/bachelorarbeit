@@ -11,13 +11,15 @@
 interface StoryblokConfig {
   accessToken?: string;
   bridge?: boolean;
-  /**
-   * Options: https://github.com/storyblok/storyblok-js-client#class-storyblok
-   */
+  /** Options: https://github.com/storyblok/storyblok-js-client#class-storyblok */
   apiOptions?: object;
   useApiClient?: boolean;
 }
 
+/** Storyblok public api key. */
+export const storyblokPublicKey = 'ph7JGalLdMBpo5QAoDrQLwtt';
+
+/** Storyblok module config. */
 export const storyblok: StoryblokConfig = {
-  accessToken: process.env.STORYBLOK_PRIVATE_KEY
+  accessToken: process.env.STORYBLOK_PRIVATE_KEY || storyblokPublicKey
 };
