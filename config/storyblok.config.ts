@@ -1,5 +1,6 @@
 /**
  * https://github.com/storyblok/storyblok-nuxt#options
+ * 
  * @default
  * {
     accessToken: '<your-access-token>',
@@ -11,8 +12,7 @@
 interface StoryblokConfig {
   accessToken?: string;
   bridge?: boolean;
-  /** Options: https://github.com/storyblok/storyblok-js-client#class-storyblok */
-  apiOptions?: object;
+  apiOptions?: object; // https://github.com/storyblok/storyblok-js-client#class-storyblok
   useApiClient?: boolean;
 }
 

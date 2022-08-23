@@ -7,10 +7,12 @@
 interface DynamicRoutesConfig {
   /** Exclude slugs for `exclude_slug` field in Storyblok API.
    *  Don't use as path with slash at beginning.
+   *
    * @example ['foo', 'foo/bar']
    */
   excludeSlugs?: string[];
   /** Include paths for SSG.
+   *
    * @example ['/foo', '/foo/bar']
    */
   includePaths?: string[];
