@@ -27,9 +27,9 @@ export default defineNuxtConfig({
     ['@nuxtjs/tailwindcss', tailwindcss],
 
     // Custom Modules
-    ['./modules/dynamic-routes', dynamicRoutes],
-    './modules/netlify-redirects',
-    './modules/netlify-password-protection'
+    ['./modules/dynamic-routes.module', dynamicRoutes],
+    './modules/netlify-redirects.module',
+    './modules/netlify-password-protection.module'
     // Sitemap module disabled because alternative solution with server routes is used
     // './modules/sitemap',
   ],
