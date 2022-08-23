@@ -11,22 +11,19 @@ const realPaths = {
 };
 
 /**
- * Resolve real_slug from Storyblok to path for internalrouting.
+ * Resolve real path from Storyblok to path for internal routing.
  * Returns path with slash on start.
  *
- * @param {string} full_slug
- * @returns {string} returns path without slash on start
+ * @example linkResolver('home') => '/'
  */
 function linkResolver(full_slug: string): string {
   return realPaths[full_slug] ? realPaths[full_slug] : '/' + full_slug;
 }
 
 /**
- * Resolve path from Router to Storyblok full_slug.
+ * Resolve `path` from Router to Storyblok `full_slug`.
  * Read more: https://www.storyblok.com/cl/real-path-added-to-content-delivery-api
  *
- * @param {string} path
- * @returns {string}
  * @example realPathResolver('/') => 'home'
  */
 function realPathResolver(path: string): string {
@@ -40,9 +37,6 @@ function realPathResolver(path: string): string {
 
 /**
  * Implement page SEO from Storyblok Story Data.
- *
- * @param {StoryData} story
- * @param {string} path
  */
 function useStoryHead(story: StoryData, path: string): void {
   if (!story) return;
