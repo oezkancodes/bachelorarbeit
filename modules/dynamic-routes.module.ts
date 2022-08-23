@@ -21,7 +21,7 @@ export default defineNuxtModule({
 
   defaults: {
     excludeSlugs: [],
-    include: []
+    includePaths: []
   },
 
   setup(options, nuxt) {
@@ -67,12 +67,12 @@ export default defineNuxtModule({
       }
 
       // Include routes
-      if (Array.isArray(options.include)) {
-        options.include.forEach((path) => {
+      if (Array.isArray(options.includePaths)) {
+        options.includePaths.forEach((path) => {
           if (typeof path !== 'string') return;
           routes.push(path);
         });
-        printRoutes(options.include, '❕ Included routes:');
+        printRoutes(options.includePaths, '❕ Included routes:');
       }
 
       // Exclude slugs
