@@ -9,7 +9,7 @@ export default defineEventHandler(async () => {
   const storyblokApi = new StoryblokClient({
     accessToken: config.public.STORYBLOK_PUBLIC_KEY
   });
-  const excluding_slugs = dynamicRoutes.exclude;
+  const excluding_slugs = dynamicRoutes.excludeSlugs;
   const stories: StoryData[] = await storyblokApi
     .get('cdn/stories', {
       starts_with: '',

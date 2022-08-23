@@ -20,7 +20,7 @@ export default defineNuxtModule({
   },
 
   defaults: {
-    exclude: [],
+    excludeSlugs: [],
     include: []
   },
 
@@ -37,8 +37,11 @@ export default defineNuxtModule({
         starts_with: '',
         version: 'published'
       };
-      if (Array.isArray(options.exclude) && options.exclude.length > 0) {
-        apiOptions.excluding_slugs = options.exclude.join(',');
+      if (
+        Array.isArray(options.excludeSlugs) &&
+        options.excludeSlugs.length > 0
+      ) {
+        apiOptions.excluding_slugs = options.excludeSlugs.join(',');
       }
       const routes: string[] = await storyblokApi
         .get('cdn/stories', apiOptions)
@@ -72,9 +75,9 @@ export default defineNuxtModule({
         printRoutes(options.include, '❕ Included routes:');
       }
 
-      // Exclude routes
-      if (Array.isArray(options.exclude)) {
-        printRoutes(options.exclude, '❕ Excluded routes:');
+      // Exclude slugs
+      if (Array.isArray(options.excludeSlugs)) {
+        printRoutes(options.excludeSlugs, '❕ Excluded slugs:');
       }
 
       // Inject routes for prerender

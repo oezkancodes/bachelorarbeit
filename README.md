@@ -54,7 +54,7 @@ Achten Sie auf die Konsole. Es werden Ihnen wichtige Informationen zum Generieru
 ❕ Included routes:
   📄 /sitemap.xml
   📄 /404.html
-❕ Excluded routes:
+❕ Excluded slugs:
   📄 configuration/navigation
   📄 configuration/footer
   📄 configuration/password

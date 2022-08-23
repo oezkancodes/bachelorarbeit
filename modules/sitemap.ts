@@ -45,7 +45,7 @@ export default defineNuxtModule({
       const stories: StoryData[] = await storyblokApi
         .get('cdn/stories', {
           starts_with: '',
-          excluding_slugs: dynamicRoutes.exclude.join(','),
+          excluding_slugs: dynamicRoutes.excludeSlugs.join(','),
           version: 'published'
         })
         .then((res) => {

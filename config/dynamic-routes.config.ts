@@ -1,30 +1,28 @@
 /**
- * Config for custom module `nuxt.dynamic-routes.ts`.
+ * Config for custom module `dynamic-routes`.
  *
  * @default
- * {
- *   exclude: []
- * }
+ * { excludeSlugs: [], includePaths: [] }
  */
 interface DynamicRoutesConfig {
-  /** Exclude slugs for exclude_slug fields in Storyblok API.
-   *  Don't use slash at beginning.
+  /** Exclude slugs for `exclude_slug` field in Storyblok API.
+   *  Don't use as path with slash at beginning.
    * @example ['foo', 'foo/bar']
    */
-  exclude?: string[];
-  /** Include paths in SSG.
+  excludeSlugs?: string[];
+  /** Include paths for SSG.
    * @example ['/foo', '/foo/bar']
    */
-  include?: string[];
+  includePaths?: string[];
 }
 
 export const dynamicRoutes: DynamicRoutesConfig = {
-  exclude: [
+  excludeSlugs: [
     'configuration/navigation',
     'configuration/footer',
     'configuration/password',
     'configuration/redirects',
     'configuration/protected-routes'
   ],
-  include: ['/sitemap.xml', '/404.html']
+  includePaths: ['/sitemap.xml', '/404.html']
 };
