@@ -55,10 +55,10 @@ export default defineNuxtModule({
       let _headers = '# Password Protection';
 
       protectedRoutes.forEach(({ username, password, route }) => {
-        const routeUrl =
+        const resolvedPath =
           route.linktype === 'url' ? route.url : linkResolver(route.cached_url);
-        console.log('   🔐 ' + routeUrl + INDENT + username);
-        _headers += LN + routeUrl;
+        console.log('   🔐 ' + resolvedPath + INDENT + username);
+        _headers += LN + resolvedPath;
         _headers += LN + INDENT + PREFIX + username + ':' + password;
       });
 
