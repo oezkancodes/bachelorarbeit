@@ -1,4 +1,4 @@
-type PageSEO = {
+export type PageSEO = {
   title?: string;
   description?: string;
   image?: string;
@@ -6,5 +6,3 @@ type PageSEO = {
   type?: string;
   locale?: string;
 };
-
-export { PageSEO };
