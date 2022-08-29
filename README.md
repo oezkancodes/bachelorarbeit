@@ -1,4 +1,4 @@
-> ⚠️ In Bearbeitung
+> [📕 Bachelorarbeit als PDF ansehen](./public/documents/Thesis.pdf).
 
 ![Titelbild](./public/images/thesis-title.jpg)
 
@@ -19,7 +19,7 @@ Die Bachelorarbeit beschäftigt sich mit der Ausarbeitung praktischer Lösungssz
 
 ## ⚠️ Node.js Version
 
-Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der [Datei `.nvmrc`](.nvmrc) definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen mehrere Node Versionen auf Ihrem Rechner zu verwalten.
+Stellen Sie sicher, dass Sie eine kompatible Node.js Version installiert haben. Die Version ist in der [Datei `.nvmrc`](./.nvmrc) definiert. Der [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) kann Ihnen dabei helfen mehrere Node Versionen auf Ihrem Rechner zu verwalten.
 
 ## Nuxt einrichten
 
@@ -72,6 +72,8 @@ Achten Sie auf die Konsole. Es werden Ihnen wichtige Informationen zum Generieru
 ⚠️ No protected routes found
 ✅ Created _headers file to /public
 ```
+
+Der Output für das Deployment befindet sich dann im Ordner `dist`.
 
 Weitere Informationen finden Sie in der [Dokumentation zum Deployment](https://v3.nuxtjs.org/guide/deploy/presets).
 
