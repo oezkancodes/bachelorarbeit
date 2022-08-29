@@ -33,7 +33,7 @@
     const res: Story = await storyblokApi.get(
       'cdn/stories/' + realPathResolver(route.path),
       {
-        version: 'published'
+        version: 'draft'
       }
     );
     return res.data.story;
